@@ -19,15 +19,9 @@ namespace Linked_list_001
             int prevNodeData = 100000;
             int newNodeData = 100;
             list.AddAfterNode(prevNodeData, newNodeData);
-            list.PrintAll();
-            list.PrintAllPrev();
 
             list.RemoveOne(2);
-            list.PrintAll();
-            list.PrintAllPrev();
-
             list.ToArray();
-
 
             list.Clear();
         }
@@ -46,20 +40,16 @@ namespace Linked_list_001
             list.Add("GGGGG");
             list.Add("ZZZZZ");
 
-            list.PrintAll();
-
             string prevNodeData = "CCCCC";
             string newNodeData = "XYXYXYXY";
             list.AddAfterNode(prevNodeData, newNodeData);
-            list.PrintAll();
 
-            list.RemoveOne("GGGGG");
-            list.PrintAll();
-
-            list.PrintAll();
-
+            list.RemoveOne("GGGGG");   
             list.ToArray();
-
+            
+            list.PrintAll();
+            list.PrintAllPrev();
+            
             list.Clear();
         }
 
