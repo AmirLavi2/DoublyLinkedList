@@ -37,23 +37,23 @@ namespace Linked_list_001
         {
             LinkList<string> list = new LinkList<string>();
 
-            list.Add("3");
-            list.Add("45vfd");
-            list.Add("asdas");
-            list.Add("435346");
-            list.Add("3453fg");
-            list.Add("xcvyixf");
-            list.Add("srttgdsf");
-            list.Add("x");
+            list.Add("AAAAA");
+            list.Add("BBBBB");
+            list.Add("CCCCC");
+            list.Add("DDDDD");
+            list.Add("EEEEE");
+            list.Add("FFFFF");
+            list.Add("GGGGG");
+            list.Add("ZZZZZ");
 
             list.PrintAll();
 
-            string prevNodeData = "asdas";
-            string newNodeData = "z";
+            string prevNodeData = "CCCCC";
+            string newNodeData = "XYXYXYXY";
             list.AddAfterNode(prevNodeData, newNodeData);
             list.PrintAll();
 
-            list.RemoveOne("x");
+            list.RemoveOne("GGGGG");
             list.PrintAll();
 
             list.PrintAll();
