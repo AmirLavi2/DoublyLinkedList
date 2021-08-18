@@ -22,6 +22,14 @@ namespace Linked_list_001
 
             list.PrintFromHeadForward();
             list.PrintFromTailReverse();
+            list.RemoveOne(1);
+
+            list.PrintFromHeadForward();
+            list.PrintFromTailReverse();
+            list.RemoveOne(7);
+
+            list.PrintFromHeadForward();
+            list.PrintFromTailReverse();
             list.RemoveOne(4);
 
             list.PrintFromHeadForward();

@@ -186,7 +186,11 @@ namespace Linked_list_001
                 return;
             }
             Node<T> prevNode = currNode.Previous;
-            prevNode.Next = currNode.Next; // קפיצה במצביע מעל האיבר שנבחר
+
+            // TODO: not work with the first and the last Node | pointer will jump over the Node
+            prevNode.Next = currNode.Next;
+            currNode.Next.Previous = prevNode;
+
             Console.WriteLine("Node " + data + " was removed\n");
             length--;
         }
