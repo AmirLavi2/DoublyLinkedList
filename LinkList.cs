@@ -23,45 +23,22 @@ namespace Linked_list_001
             tail = null;
         }
 
-        // תהליך לא יעיל
-        /*public void AddToEnd(T data)
-        {
-            Node<T> newNode = new Node<T>(data);
-
-            if (head == null) // אם אין רשימה - נאתחל אותה כאן
-            {
-                head = newNode;
-                length++;
-            }
-            else //  נתקדם בחוליות עד החוליה האחרונה שלא מצביעה על כלום
-            {              
-                Node<T> current = head;
-                while (current.Next != null) // תהליך לא יעיל
-                {
-                    current = current.Next;
-                }
-                current.Next = newNode; // פה נמצאים על החוליה האחרונה. מפה ניצור חוליה חדשה
-                current.Previous = current.Next.Next;
-                length++;
-            }
-        }*/
-
         public void Add(T data)
         {
             Node<T> newNode = new Node<T>(data);
 
-            if (head == null) // אם אין רשימה - נאתחל אותה כאן
+            if (head == null) // create new List
             {
                 head = newNode;
                 tail = newNode;
             }
-            else // אם יש רשימה
+            else // add new Node to the end of the list
             {
-                tail.Next = newNode; // מזיזים את המצביע לאיבר החדש האחרון
+                tail.Next = newNode; // updating the tail pointer to the new last Node 
                 newNode.Previous = tail;
             }
             tail = newNode;
-            length++; // מעדכנים את אורך הרשימה
+            length++;
         }
 
         public void AddAfterNode(T prevNodeData, T newNodeData)
@@ -84,11 +61,11 @@ namespace Linked_list_001
             prevNode.Next = newNodeBetween; // האיבר הקודם יצביע על האיבר החדש
             newNodeBetween.Previous = prevNode; // האיבר החדש יצביע אחורה על האיבר הקודם
 
-            if(newNodeBetween.Next == null) tail = newNodeBetween; // אם האיבר החדש הוא האחרון - נעדכן את הזנב
+            if (newNodeBetween.Next == null) tail = newNodeBetween; // אם האיבר החדש הוא האחרון - נעדכן את הזנב
 
             Console.WriteLine("Added new Node after: " + prevNodeData);
         }
-        
+
         public Node<T> FindNodeByData(T data)
         {
             Node<T> current = head;
@@ -110,7 +87,7 @@ namespace Linked_list_001
             Node<T> current = head;
 
             Console.Write("Link List: ");
-            
+
             while (current.Next != null)
             {
                 Console.Write("(" + current.Data + ")->");
@@ -158,7 +135,7 @@ namespace Linked_list_001
             Node<T> current = head;
             T[] arr = new T[Length];
 
-            for(int i=0;i<Length;i++)
+            for (int i = 0; i < Length; i++)
             {
                 arr[i] = current.Data;
                 current = current.Next;
