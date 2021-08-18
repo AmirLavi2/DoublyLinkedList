@@ -76,59 +76,42 @@ namespace Linked_list_001
             return current;
         }
 
-        public void PrintAll()
+        /*public void PrintAll()
         {
             if (head == null)
             {
                 Console.WriteLine("Error: there is no nodes on this Link List");
                 return;
             }
+            Node<T> temp = head;
 
-            Node<T> current = head;
-
-            Console.Write("Link List: ");
-
-            while (current.Next != null)
+            while (temp.Next != null)
             {
-                Console.Write("(" + current.Data + ")->");
-                current = current.Next;
+                Console.Write("(" + temp.Data + ")->");
+                temp = temp.Next;
             }
-            Console.WriteLine("(" + current.Data + ")"); // הדפסת האיבר האחרון
-            Console.WriteLine("Number of Nodes: " + length);
-        }
+            Console.Write("(" + temp.Data + ")"); // הדפסת האיבר האחרון
+            Console.WriteLine("  <= Link List");
+        }*/
 
-        public void PrintAllPrev()
+        /*public void PrintAllReverse()
         {
             if (head == null)
             {
                 Console.WriteLine("Error: there is no nodes on this Link List");
                 return;
             }
+            Node<T> temp = tail;
 
-            Node<T> current = tail;
-
-            Console.Write("Link List Previous: ");
-
-            while (current.Previous != null)
+            while (temp.Previous != null)
             {
-                Console.Write("(" + current.Data + ")->");
-                current = current.Previous;
+                Console.Write("(" + temp.Data + ")->");
+                temp = temp.Previous;
             }
-            Console.WriteLine("(" + current.Data + ")"); // הדפסת האיבר האחרון
-            Console.WriteLine("Number of Nodes: " + length);
-        }
+            Console.Write("(" + temp.Data + ")"); // הדפסת האיבר האחרון
+            Console.WriteLine("  <= Link List Previous");
+        }*/
 
-        public void Clear()
-        {
-            Node<T> current = head;
-
-            while (current.Next != null)
-            {
-                head = current.Next;
-                current = current.Next;
-            }
-            head = null;
-        }
 
         public T[] ToArray()
         {
@@ -142,7 +125,35 @@ namespace Linked_list_001
             }
             return arr;
         }
-        public void RemoveOne(T data)
+
+        public void PrintFromHeadForward()
+        {
+            Node<T> temp = head;
+            while(temp != null)
+            {
+                Console.Write("(" + temp.Data + ")->");
+                temp = temp.Next;
+            }
+            Console.WriteLine("  <= Data From Head Forward");
+        }
+
+        public void PrintFromTailReverse()
+        {
+            Node<T> temp = tail;
+            while (temp != null)
+            {
+                Console.Write("(" + temp.Data + ")->");
+                temp = temp.Previous;
+            }
+            Console.WriteLine("  <= Data From Tail Reverse");
+        }
+
+        public void PrintLength()
+        {
+            Console.WriteLine("Number of Nodes: " + length);
+        }
+        
+        /*public void RemoveOne(T data)
         {
             Node<T> node = FindNodeByData(data);
 
@@ -164,7 +175,32 @@ namespace Linked_list_001
             prevNode.Next = current.Next; // קפיצה במצביע מעל האיבר שנבחר
             Console.WriteLine("Node " + data + " was removed");
             length--;
+        }*/
+        
+        public void RemoveOne(T data)
+        {
+            Node<T> currNode = FindNodeByData(data);
+            if (currNode == null)
+            {
+                Console.WriteLine("Error: cannot remove - there is no " + data + " Node");
+                return;
+            }
+            Node<T> prevNode = currNode.Previous;
+            prevNode.Next = currNode.Next; // קפיצה במצביע מעל האיבר שנבחר
+            Console.WriteLine("Node " + data + " was removed\n");
+            length--;
         }
+        
+        public void Clear()
+        {
+            Node<T> temp = head;
 
+            while (temp.Next != null)
+            {
+                head = temp.Next;
+                temp = temp.Next;
+            }
+            head = null;
+        }
     }
 }

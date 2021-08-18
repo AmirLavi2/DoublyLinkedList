@@ -8,20 +8,30 @@ namespace Linked_list_001
         {
             LinkList<int> list = new LinkList<int>();
 
-            list.Add(0);
             list.Add(1);
             list.Add(2);
-            list.Add(100000);
+            list.Add(3);
+            list.Add(4);
+            list.Add(5);
+            list.Add(6);
+            list.Add(7);
 
-            list.PrintAll();
-            list.PrintAllPrev();
+            list.PrintFromHeadForward();
+            list.PrintFromTailReverse();
+            list.RemoveOne(2);
 
-            int prevNodeData = 100000;
+            list.PrintFromHeadForward();
+            list.PrintFromTailReverse();
+            list.RemoveOne(4);
+
+            list.PrintFromHeadForward();
+            list.PrintFromTailReverse();
+
+            /*int prevNodeData = 100000;
             int newNodeData = 100;
             list.AddAfterNode(prevNodeData, newNodeData);
 
-            list.RemoveOne(2);
-            list.ToArray();
+            list.ToArray();*/
 
             list.Clear();
         }
@@ -46,17 +56,17 @@ namespace Linked_list_001
 
             list.RemoveOne("GGGGG");   
             list.ToArray();
-            
-            list.PrintAll();
-            list.PrintAllPrev();
-            
+
+            list.PrintFromHeadForward();
+            list.PrintFromTailReverse();
+
             list.Clear();
         }
 
         static void Main(string[] args)
         {
             IntList();
-            StrList();
+            //StrList();
             Console.ReadLine();
         }
     }
