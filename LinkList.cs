@@ -157,6 +157,18 @@ namespace Linked_list_001
                 temp = temp.Next;
             }
             head = null;
+
+
+            temp = tail;
+
+            while (temp.Next != null)
+            {
+                head = temp.Next;
+                temp = temp.Next;
+            }
+            tail = null;
+
+            length = 0;
         }
     }
 }
