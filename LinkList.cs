@@ -25,6 +25,7 @@ namespace Linked_list_001
 
         public void Add(T data)
         {
+            Console.WriteLine("LinkList -> Add");
             Node<T> newNode = new Node<T>(data);
 
             if (head == null) // create new List
@@ -41,33 +42,33 @@ namespace Linked_list_001
             length++;
         }
 
-        public void AddAfterNode(T prevNodeData, T newNodeData)
+        public void AddAfterNode(T currNodeData, T newNodeData)
         {
-            Node<T> node = FindNodeByData(prevNodeData);
+            Console.WriteLine("LinkList -> AddAfterNode");
+            Node<T> currNode = FindNodeByData(currNodeData);
 
-            if (node == null)
+            if (currNode == null)
             {
-                Console.WriteLine("Error: there is no node equal to: " + prevNodeData);
+                Console.WriteLine("Error: there is no " + currNodeData + " Node");
                 return;
             }
+            Node<T> newNode = new Node<T>(newNodeData);
+            Node<T> NextNode = currNode.Next;
 
-            Node<T> prevNode = node; // נחזיר את ערך האיבר הקודם
-            Node<T> nextNode = node.Next; // נחזיר את ערך האיבר הבא
-            Node<T> newNodeBetween = new Node<T>(newNodeData); // ניצור איבר חדש
+            newNode.Previous = currNode;
+            currNode.Next = newNode;
+            newNode.Next = NextNode;
 
-            // האיבר החדש יכנס ביניהם
-            newNodeBetween.Next = nextNode; // האיבר החדש יצביע על האיבר הקודם
+            if (NextNode != null) NextNode.Previous = newNode; 
+            else tail = newNode; // the added Node is the new last Node
+
             length++;
-            prevNode.Next = newNodeBetween; // האיבר הקודם יצביע על האיבר החדש
-            newNodeBetween.Previous = prevNode; // האיבר החדש יצביע אחורה על האיבר הקודם
-
-            if (newNodeBetween.Next == null) tail = newNodeBetween; // אם האיבר החדש הוא האחרון - נעדכן את הזנב
-
-            Console.WriteLine("Added new Node after: " + prevNodeData);
+            Console.WriteLine("Added Node " + newNodeData  + " after " + currNodeData);
         }
 
         public Node<T> FindNodeByData(T data)
         {
+            Console.WriteLine("LinkList -> FindNodeByData");
             Node<T> current = head;
             while (current != null && !(current.Data).Equals(data))
             {
@@ -76,45 +77,9 @@ namespace Linked_list_001
             return current;
         }
 
-        /*public void PrintAll()
-        {
-            if (head == null)
-            {
-                Console.WriteLine("Error: there is no nodes on this Link List");
-                return;
-            }
-            Node<T> temp = head;
-
-            while (temp.Next != null)
-            {
-                Console.Write("(" + temp.Data + ")->");
-                temp = temp.Next;
-            }
-            Console.Write("(" + temp.Data + ")"); // הדפסת האיבר האחרון
-            Console.WriteLine("  <= Link List");
-        }*/
-
-        /*public void PrintAllReverse()
-        {
-            if (head == null)
-            {
-                Console.WriteLine("Error: there is no nodes on this Link List");
-                return;
-            }
-            Node<T> temp = tail;
-
-            while (temp.Previous != null)
-            {
-                Console.Write("(" + temp.Data + ")->");
-                temp = temp.Previous;
-            }
-            Console.Write("(" + temp.Data + ")"); // הדפסת האיבר האחרון
-            Console.WriteLine("  <= Link List Previous");
-        }*/
-
-
         public T[] ToArray()
         {
+            Console.WriteLine("LinkList -> ToArray");
             Node<T> current = head;
             T[] arr = new T[Length];
 
@@ -128,6 +93,7 @@ namespace Linked_list_001
 
         public void PrintFromHeadForward()
         {
+            Console.WriteLine("LinkList -> PrintFromHeadForward");
             Node<T> temp = head;
             while(temp != null)
             {
@@ -139,6 +105,7 @@ namespace Linked_list_001
 
         public void PrintFromTailReverse()
         {
+            Console.WriteLine("LinkList -> PrintFromTailReverse");
             Node<T> temp = tail;
             while (temp != null)
             {
@@ -150,6 +117,7 @@ namespace Linked_list_001
 
         public void PrintLength()
         {
+            Console.WriteLine("LinkList -> PrintLength");
             Console.WriteLine("Number of Nodes: " + length);
         }
         
@@ -179,17 +147,23 @@ namespace Linked_list_001
         
         public void RemoveOne(T data)
         {
+            Console.WriteLine("LinkList -> RemoveOne");
+
             Node<T> currNode = FindNodeByData(data);
             if (currNode == null)
             {
                 Console.WriteLine("Error: cannot remove - there is no " + data + " Node");
                 return;
             }
-            Node<T> prevNode = currNode.Previous;
 
-            // TODO: not work with the first and the last Node | pointer will jump over the Node
-            prevNode.Next = currNode.Next;
-            currNode.Next.Previous = prevNode;
+            Node<T> prevNode = currNode.Previous;
+            Node<T> nextNode = currNode.Next;
+
+            if(prevNode != null) prevNode.Next = nextNode; 
+            else head = currNode.Next; // the removed Node was the first Node
+
+            if (nextNode != null) nextNode.Previous = prevNode; 
+            else tail = currNode.Previous; // the removed Node was the last Node
 
             Console.WriteLine("Node " + data + " was removed\n");
             length--;
@@ -197,6 +171,7 @@ namespace Linked_list_001
         
         public void Clear()
         {
+            Console.WriteLine("LinkList -> Clear");
             Node<T> temp = head;
 
             while (temp.Next != null)

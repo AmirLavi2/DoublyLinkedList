@@ -18,28 +18,18 @@ namespace Linked_list_001
 
             list.PrintFromHeadForward();
             list.PrintFromTailReverse();
-            list.RemoveOne(2);
 
-            list.PrintFromHeadForward();
-            list.PrintFromTailReverse();
             list.RemoveOne(1);
-
-            list.PrintFromHeadForward();
-            list.PrintFromTailReverse();
-            list.RemoveOne(7);
-
-            list.PrintFromHeadForward();
-            list.PrintFromTailReverse();
-            list.RemoveOne(4);
-
             list.PrintFromHeadForward();
             list.PrintFromTailReverse();
 
-            /*int prevNodeData = 100000;
+            int currectNodeData = 1;
             int newNodeData = 100;
-            list.AddAfterNode(prevNodeData, newNodeData);
+            list.AddAfterNode(currectNodeData, newNodeData);
+            list.PrintFromHeadForward();
+            list.PrintFromTailReverse();
 
-            list.ToArray();*/
+            // list.ToArray();
 
             list.Clear();
         }
@@ -73,6 +63,7 @@ namespace Linked_list_001
 
         static void Main(string[] args)
         {
+            Console.WriteLine("== Wellcome to Link List Program ! ==");
             IntList();
             //StrList();
             Console.ReadLine();
