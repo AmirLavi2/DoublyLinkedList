@@ -29,7 +29,7 @@ namespace Linked_list_001
             list.PrintFromHeadForward();
             list.PrintFromTailReverse();
 
-            // list.ToArray();
+            list.ToArray();
 
             list.Clear();
         }

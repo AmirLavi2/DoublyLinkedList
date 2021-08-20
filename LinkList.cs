@@ -88,6 +88,7 @@ namespace Linked_list_001
                 arr[i] = current.Data;
                 current = current.Next;
             }
+
             return arr;
         }
 
