@@ -121,30 +121,6 @@ namespace Linked_list_001
             Console.WriteLine("Number of Nodes: " + length);
         }
         
-        /*public void RemoveOne(T data)
-        {
-            Node<T> node = FindNodeByData(data);
-
-            if (node == null)
-            {
-                Console.WriteLine("Error: there is no node data " + data);
-                return;
-            }
-
-            Node<T> current = head;
-            Node<T> prevNode = head;
-
-            while (!(current.Data).Equals(data))
-            {
-                prevNode = current;  // האיבר הקודם
-                current = current.Next;
-            }
-
-            prevNode.Next = current.Next; // קפיצה במצביע מעל האיבר שנבחר
-            Console.WriteLine("Node " + data + " was removed");
-            length--;
-        }*/
-        
         public void RemoveOne(T data)
         {
             Console.WriteLine("LinkList -> RemoveOne");
